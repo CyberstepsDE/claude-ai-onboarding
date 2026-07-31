@@ -1,76 +1,90 @@
 # Session 1 — Concepts
 
-Welcome to Session 1. This session is **concepts only**. We'll name the pieces so you can recognize them. Session 2 is where you actually pick them up and build.
+The words and files you need to understand before Session 2 gets hands-on.
 
-## 1. The Claude model family
+## What's in this folder
 
-Claude comes in a few sizes. Pick the one that fits the job.
+```
+session-1-basics/
+├── README.md          ← you are here (the concept overview)
+├── examples/          ← real files, ready to look at
+│   ├── CLAUDE.md
+│   ├── SKILL.md
+│   └── RULES.md
+└── reference/         ← plain-English explanation of each file above
+    ├── claude-md.md
+    ├── skills.md
+    └── rules.md
+```
 
-- **Haiku 4.5** — fast and cheap. Great for simple lookups, quick classification, and anything you'll run at high volume.
-- **Sonnet 5** — the default. A strong all-rounder for most work: writing, reasoning, coding, agentic loops.
-- **Opus 4.8** — the powerhouse. Reach for it on hard problems: deep research, tricky reasoning, high-stakes work.
-- **Fable 5** — the current top tier. When you need the very best available and cost is not the concern.
+**How to use the two folders together:** open the `examples/` file for the *shape*, open the matching `reference/` doc for the *why*.
 
-**Rule of thumb: start with Sonnet.** Move down to Haiku if speed and cost matter more than depth. Move up to Opus or Fable only when Sonnet isn't good enough.
+## 1. Which Claude model?
 
-> **Model lineup changes fast.** New models arrive every few months and older ones get retired. Always confirm the current lineup at **anthropic.com/pricing** before teaching this session.
+| Model | When to pick it |
+|---|---|
+| **Haiku 4.5** | Fast, cheap. Bulk work — tag 10,000 tickets overnight. |
+| **Sonnet 5** | The default. Start here. |
+| **Opus 4.8** | Hard reasoning, deep research. |
+| **Fable 5** | Top tier. When cost doesn't matter. |
 
-## 2. Core concepts
+**Rule of thumb: start with Sonnet.**
 
-A few words you'll hear all the time.
+> The lineup changes every few months. Confirm at **anthropic.com/pricing** before teaching.
 
-- **Prompt** — what you send to Claude. Your question, your instruction, the text you want it to work on.
-- **Tokens** — the chunks Claude reads and writes. Roughly 3–4 characters each. You pay per token, so length matters.
-- **Context window** — how much text Claude can "see" at once. Everything in the conversation, plus any files it reads, lives in the window.
-- **Temperature** — how creative Claude is allowed to be. Low is predictable and repeatable. High is varied and surprising. Most work runs at low or default.
+## 2. Vocabulary
 
-## 3. Rate limits
+| Word | What it means |
+|---|---|
+| **Prompt** | What you send Claude. |
+| **Token** | ~3–4 characters. You pay per token. |
+| **Context window** | How much text Claude can see at once. |
+| **Temperature** | Low = predictable. High = creative. |
 
-Anthropic caps how much you can send to Claude per minute or per day. This protects the service and your bill.
+**Example:** *"Summarize this doc."* is ~4 tokens. A 10-page PDF is ~5,000 tokens. Both fit in the context window with room to spare.
 
-- **RPM** — requests per minute.
-- **TPM** — tokens per minute.
-- **TPD** — tokens per day.
+## 3. Rate limits (RPM / TPM / TPD)
 
-If you exceed a limit, the API returns a **429** error. The fix is not to retry harder — it's to wait, back off, batch, or move to a smaller model.
+You get so many **R**equests **P**er **M**inute, **T**okens **P**er **M**inute, and **T**okens **P**er **D**ay. Exceed them and you get **HTTP 429**.
 
-## 4. System prompts
+**Fix:** wait, batch, or drop to a smaller model. Not "retry harder."
 
-A **system prompt** is Claude's operating instructions. It's the first thing Claude reads at the start of every session — the **employee handbook** you'd hand a new hire on day one: who they work for, how they should behave, what's off-limits.
+## 4. Claude Code vs. Cowork
 
-You'll see how to write good ones in Session 2. For now, just know what they are.
+- **Claude Code** — terminal / IDE. Files on your laptop.
+- **Cowork** — browser. Hosted environment.
 
-## 5. `CLAUDE.md`
+Same model. Different door.
 
-`CLAUDE.md` is a plain markdown file that lives at the root of a project. Claude Code reads it automatically at the start of every session. Think of it as **passive project memory** — you don't have to remind Claude of the project's context each time; the file does it for you.
+## 5. The three files that shape Claude's behavior
 
-There's an example in `examples/CLAUDE.md`. It's the only config-file example in Session 1.
+Almost everything about how a Claude project behaves is controlled by three plain-markdown files. Learn these three and you can read most Claude projects in the wild.
 
-## 6. Claude Code vs. Cowork
+### `CLAUDE.md` — context
 
-Two ways to use Claude for real work.
+The employee handbook. Who Claude is on this project, how it should work, what to avoid. Claude reads it at the start of every session.
 
-- **Claude Code** — the terminal / IDE tool. You're in a folder on your machine, Claude reads and edits files there, runs commands, and works alongside you locally.
-- **Cowork** — the browser experience. A managed Claude environment for structured collaboration and cloud-hosted work. No local install.
+- **Example:** `examples/CLAUDE.md`
+- **Reference:** `reference/claude-md.md`
 
-Same model behind both. Different surface. Pick based on where your work already lives.
+### `SKILL.md` — capabilities
 
-## Builder's Toolkit — coming in Session 2
+What Claude *can* do. Each skill describes a specific behavior: when to use it, how it should work, what the output should look like.
 
-You'll meet all of these next session. Just the names for now.
+- **Example:** `examples/SKILL.md`
+- **Reference:** `reference/skills.md`
 
-- **Skills** — what Claude *can* do.
-- **Rules** — what Claude *cannot* do.
-- **Hooks** — automatic before/after checkpoints.
-- **Modes** — how much freedom you give Claude in Claude Code.
-- **Tools & Agents** — how Claude takes action beyond the chat window.
-- **Prompt-injection safety** — how to keep untrusted text from hijacking Claude.
-- **Evals** — how you know your agent actually works.
+### `RULES.md` — guardrails
 
-## Next
+What Claude *cannot* do. Scope, safety, output constraints, tone.
 
-- Skim `examples/CLAUDE.md` — a realistic example for a fictional support agent.
-- Do the short exercises in `exercises/README.md`.
-- The case study and every builder topic live in Session 2.
+- **Example:** `examples/RULES.md`
+- **Reference:** `reference/rules.md`
 
-See you there.
+**One-liner to memorize:** *Skills unlock behavior. Rules constrain it. `CLAUDE.md` gives them both context.*
+
+## Coming in Session 2 (just the names)
+
+**Hooks · Modes · Tools & Agents · Prompt-injection safety · Evals**
+
+Session 2 layers these on top of the three files above and walks the group through a live build.

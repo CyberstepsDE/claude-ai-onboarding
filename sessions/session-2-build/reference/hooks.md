@@ -94,13 +94,13 @@ Rules are advisory. Hooks are enforcement. **Use both together** — rules teach
 
 ## Try it live — a runnable example
 
-There's a working hook ready to copy in **`../examples/hooks/`**. It's a `PreToolUse` hook on `Bash` that blocks any command containing `rm -r` or `rm -rf`.
+There's a full playground you can run: **`../hooks-playground/`**. It wires up three hooks — a Bash blocker, a secrets protector, and a prompt logger.
 
-See **`../examples/hooks/README.md`** for the full install-and-trigger walkthrough. In short:
+See **`../hooks-playground/README.md`** and **`../hooks-playground/walkthrough.md`** for the install-and-trigger steps. In short:
 
-1. Copy `settings.json` into your project's `.claude/settings.json`.
-2. Copy `block-dangerous-bash.sh` into `.claude/hooks/` and `chmod +x` it.
-3. Restart Claude Code, ask it to run `rm -rf /tmp/demo`, and watch the hook block the call.
+1. `cd sessions/session-2-build/hooks-playground`
+2. `claude`
+3. Ask Claude to run `rm -rf /tmp/demo` and watch the hook block it.
 
 **What to notice:**
 

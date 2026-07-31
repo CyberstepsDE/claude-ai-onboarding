@@ -1,31 +1,41 @@
 # Claude AI Onboarding
 
-Welcome. This is a two-session onboarding course that introduces Claude to people who are brand new to AI. If this is your first week working with a large language model, you're in the right place. We go slow, keep things concrete, and by the end you'll have helped build a small working AI agent from scratch.
+A two-session course to get complete beginners comfortable with Claude.
 
-## What's inside
+- **Session 1** — the concepts. Models, terms, and the three files that shape how Claude behaves (`CLAUDE.md`, `SKILL.md`, `RULES.md`) — each with an example on disk and a plain-English reference.
+- **Session 2** — the build. You end the session with a working AI agent you helped build, plus a hands-on hooks playground.
 
-- **`sessions/`** — the two teaching sessions.
-  - `session-1-basics/` — concepts only. What Claude is, how you talk to it, what files it reads.
-  - `session-2-build/` — hands-on. The group completes a working research agent together.
-- **`projects/`** — the starter project used in Session 2.
-  - `research-agent/` — intentionally incomplete. The TODO markers are filled in live during the session.
+## Layout
 
-## Session split
+```
+sessions/
+├── session-1-basics/
+│   ├── README.md              ← concepts overview
+│   ├── examples/              ← real CLAUDE.md, SKILL.md, RULES.md
+│   └── reference/             ← explanation of each file
+└── session-2-build/
+    ├── README.md              ← 20-slide agenda
+    ├── build-guide.md         ← the live-build steps
+    ├── reference/             ← hooks + modes cheatsheets
+    ├── research-agent/        ← starter project with TODOs
+    └── hooks-playground/      ← runnable three-hook demo
+```
 
-Each deep topic has exactly one home so there is no repetition.
+## Quick tour
 
-- **Session 1 — concepts.** The model family, core terms (prompt, tokens, context window, temperature), rate limits, system prompts (the concept), `CLAUDE.md`, and Claude Code vs. Cowork. Session 1 names the builder topics for Session 2 but does not explain them.
-- **Session 2 — build.** Skills, Rules, Hooks, Modes, Tools & Agents, prompt-injection safety, evals, and a live build of the research agent.
+**Session 1, in one line:** "Here's Sonnet 5, here's a prompt, here's what a `CLAUDE.md` / `SKILL.md` / `RULES.md` looks like."
 
-## Prerequisites
+**Session 2, in one line:** "Open `hooks-playground/`, ask Claude to run `rm -rf /tmp/x`, watch a hook block it — then build the research agent."
 
-- A Claude account (Claude.ai or Claude Code — either works).
-- Basic comfort with a terminal — opening a folder, running a command. You do not need to know how to program.
-- Curiosity and a willingness to try things and iterate.
+## You need
 
-## How to use this repo
+- A Claude account.
+- A terminal you're not scared of.
+- One hour, twice.
 
-1. Read `sessions/session-1-basics/README.md` and work through the exercises. This is your concepts base.
-2. In Session 2, clone this repo, open `sessions/session-2-build/README.md`, and follow `build-guide.md`. Complete the TODOs in `projects/research-agent/` as a group.
+## How to use this
 
-Have fun. Ask lots of questions.
+1. Read `sessions/session-1-basics/README.md`. Skim the three examples in `examples/` and their matching references in `reference/`.
+2. Clone this repo before Session 2. Open `sessions/session-2-build/README.md` and follow `build-guide.md` with the group.
+
+That's it.

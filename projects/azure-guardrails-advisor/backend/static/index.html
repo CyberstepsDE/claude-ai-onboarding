@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Azure Guardrails Advisor</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Azure Guardrails Advisor</h1>
+    <p class="subtitle">Scans your subscription for common security misconfigurations.</p>
+  </header>
+
+  <main>
+    <section class="controls">
+      <button id="scan-button">Run scan</button>
+      <span id="status" class="status idle">Idle</span>
+    </section>
+
+    <section id="summary" class="summary hidden">
+      <div class="metric metric-high"><span id="count-high">0</span><label>High</label></div>
+      <div class="metric metric-medium"><span id="count-medium">0</span><label>Medium</label></div>
+      <div class="metric metric-low"><span id="count-low">0</span><label>Low</label></div>
+      <div class="metric metric-total"><span id="count-total">0</span><label>Total</label></div>
+    </section>
+
+    <section id="findings"></section>
+
+    <section id="errors" class="errors hidden"></section>
+  </main>
+
+  <!-- Chat widget -->
+  <button id="chat-toggle" class="chat-toggle" aria-label="Open chat">Chat</button>
+  <aside id="chat-panel" class="chat-panel hidden" aria-live="polite">
+    <header class="chat-header">
+      <span>Ask the Advisor</span>
+      <button id="chat-close" class="chat-close" aria-label="Close chat">×</button>
+    </header>
+    <div id="chat-messages" class="chat-messages">
+      <div class="chat-msg assistant">
+        Hi — ask me about any finding, or how to fix a misconfiguration.
+      </div>
+    </div>
+    <form id="chat-form" class="chat-form">
+      <input id="chat-input" type="text" placeholder="e.g. how do I disable public access on a storage account?" autocomplete="off" />
+      <button type="submit">Send</button>
+    </form>
+  </aside>
+
+  <script src="./app.js"></script>
+  <script src="./chat.js"></script>
+</body>
+</html>

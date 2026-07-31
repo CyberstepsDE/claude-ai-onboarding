@@ -8,7 +8,7 @@ Estimated time: **45–60 minutes.**
 
 ## Step 1 — Clone and tour
 
-**What to do.** Have everyone clone this repo and open `projects/research-agent/`. Walk through the files as a group:
+**What to do.** Have everyone clone this repo and open `sessions/session-2-build/research-agent/`. Walk through the files as a group:
 
 - `CLAUDE.md` — context and role.
 - `.claude/SKILL.md` — the capability we'll define.
@@ -21,7 +21,7 @@ Estimated time: **45–60 minutes.**
 
 ## Step 2 — Read the starter `CLAUDE.md`
 
-**What to do.** Open `projects/research-agent/CLAUDE.md` and read it aloud. Ask the group: "In one sentence, what is this agent for?"
+**What to do.** Open `sessions/session-2-build/research-agent/CLAUDE.md` and read it aloud. Ask the group: "In one sentence, what is this agent for?"
 
 **Why it matters.** `CLAUDE.md` is the first thing Claude reads. If it's vague, everything downstream drifts. If it's crisp, the agent stays on track.
 

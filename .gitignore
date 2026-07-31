@@ -12,3 +12,7 @@ Thumbs.db
 
 # Personal Claude notes — not shared across the team
 CLAUDE.local.md
+
+# Hooks-playground artifacts generated during exercises
+sessions/session-2-build/hooks-playground/logs/prompts.log
+sessions/session-2-build/hooks-playground/secrets/

@@ -1,0 +1,4 @@
+# All variables have sensible defaults. Uncomment to override.
+# subscription_id = "c3dc5e7c-cd4d-46b0-b7d8-efd2e3dde06e"
+# environment     = "dev"
+# location        = "westeurope"

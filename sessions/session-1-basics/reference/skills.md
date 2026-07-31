@@ -24,40 +24,25 @@ Every SKILL.md follows the same shape:
 2. **Behavior.** The steps. A numbered list of what Claude should do when the skill runs.
 3. **Output format.** The shape. Exactly how the response should be structured — sections, bullets, fields.
 
-## Full example: `summarize_document`
+## Full example
+
+See **`../examples/SKILL.md`** for a complete `summarize_document` skill you can read on disk. Here's a compressed peek:
 
 ```markdown
 # Skill: summarize_document
 
 ## When to use
-
-Use this skill when a customer sends in a long document — a policy PDF, an
-exported email thread, a knowledge-base article — and asks for a shorter
-version. Also use it when an internal teammate pastes a wall of text and asks
-"what does this say?"
+When a user pastes a long doc and asks for a shorter version.
 
 ## Behavior
-
-1. **Read the full document.** Do not skim. Cover it start to end so nothing
-   important is missed.
-2. **Extract the 3 most important key points.** Focus on what the reader
-   actually needs to know, not what is merely present in the text.
-3. **Find any action items.** These are sentences that describe something
-   someone must do, decide, or follow up on. If there are none, say so — do
-   not invent them.
+1. Read the full document.
+2. Extract the 3 most important key points.
+3. Find any action items — do not invent them.
 
 ## Output format
-
-**Summary**
-One short paragraph (2–3 sentences) capturing the document's overall point.
-
-**Key Points**
-- Point 1
-- Point 2
-- Point 3
-
-**Action Items**
-- Who / What / When (one line each). If there are none, write: "No action items."
+**Summary** — 2–3 sentences.
+**Key Points** — 3 bullets.
+**Action Items** — one line each, or "No action items."
 ```
 
 ## When to write a new skill

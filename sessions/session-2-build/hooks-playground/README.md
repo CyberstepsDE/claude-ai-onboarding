@@ -1,49 +1,55 @@
 # Hooks Playground
 
-A tiny Claude Code project whose only purpose is to show what **Hooks** feel like when they're running. You open the folder, run Claude, then try to do things you shouldn't — and watch three different hooks intercept you in three different ways.
+A tiny project that shows what **Hooks** feel like. Open it, run Claude, try to do things you shouldn't — watch hooks step in.
 
-**Status:** ready to run. Nothing here is a TODO. Break things and see what happens.
+**Status:** ready to run. No TODOs.
 
-## What you'll see in action
+## The three hooks
 
-Three hooks are wired up in `.claude/settings.json`:
+| Hook script | Fires on | What it does |
+|---|---|---|
+| `block-dangerous-bash.sh` | Every **Bash** tool call | Blocks `rm -r`, `rm -rf`, `sudo`, `curl \| sh`. |
+| `protect-secrets.sh` | Every **Read / Edit / Write** | Blocks paths with `secrets/`, `.env`, `id_rsa`, `id_ed25519`. |
+| `log-prompts.sh` | Every **user prompt** | Appends the prompt + timestamp to `logs/prompts.log`. Never blocks. |
 
-1. **`block-dangerous-bash.sh`** — a `PreToolUse` hook on **Bash**. Refuses any command that contains `rm -r`, `rm -rf`, `sudo`, or `curl | sh`.
-2. **`protect-secrets.sh`** — a `PreToolUse` hook on **Read / Edit / Write**. Refuses to touch any file whose path contains `secrets/`, `.env`, or common private-key names (`id_rsa`, `id_ed25519`).
-3. **`log-prompts.sh`** — a `UserPromptSubmit` hook. Appends every prompt you send to `logs/prompts.log` so you can review what the session looked like.
+## Example — trigger #1
 
-The first two show the **security guard** side of hooks (block before the action happens). The third shows the **proofreader / logger** side (observe after the fact).
+You: *"Please run `rm -rf /tmp/demo`."*
+
+Claude tries the Bash tool → hook fires → exit `2` → Claude gets back:
+```
+Blocked by block-dangerous-bash: 'rm -r' / 'rm -rf' commands are not permitted in this project.
+```
+Claude relays the block to you. The shell never sees the command.
 
 ## Files
 
 ```
 hooks-playground/
-├── README.md                       — you are here
-├── CLAUDE.md                       — the agent's role
-├── walkthrough.md                  — numbered exercises to trigger each hook
-├── logs/                           — where log-prompts.sh appends
+├── README.md          ← you are here
+├── CLAUDE.md          ← the agent's role
+├── walkthrough.md     ← four exercises, one per hook flavor
+├── logs/              ← where log-prompts.sh appends
 └── .claude/
-    ├── settings.json               — the wiring
+    ├── settings.json  ← the wiring
     └── hooks/
         ├── block-dangerous-bash.sh
         ├── protect-secrets.sh
         └── log-prompts.sh
 ```
 
-## How to run
+## Run it
 
-1. Open a terminal in this folder: `cd projects/hooks-playground`.
-2. Make sure the scripts are executable (they should already be):
-   ```
-   chmod +x .claude/hooks/*.sh
-   ```
-3. Start Claude Code: `claude`.
-4. Open `walkthrough.md` and follow the exercises top to bottom. Each one triggers a different hook.
+```
+cd sessions/session-2-build/hooks-playground
+chmod +x .claude/hooks/*.sh    # already set, harmless to repeat
+claude
+```
 
-## What to notice
+Then open `walkthrough.md` and go through the four exercises.
 
-- Every hook lives **outside** Claude — the enforcement is in a shell script you control. Claude can't skip it, ignore it, or argue with it.
-- Exit code `0` = allow. Exit code `2` = block (and the stderr message is fed back to Claude). Anything else = a non-blocking warning.
-- Hooks compose with Rules. Rules teach Claude the right behavior; hooks catch the times it slips.
+## Cheat sheet
 
-For the concept behind all this, see `sessions/session-2-build/reference/hooks.md`.
+- Exit **0** = allow. Exit **2** = block. Anything else = non-blocking warning.
+- Enforcement lives **outside** Claude, in shell scripts you control.
+- Concept lives in `../reference/hooks.md`.

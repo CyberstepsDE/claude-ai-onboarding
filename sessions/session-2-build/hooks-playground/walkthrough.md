@@ -4,7 +4,7 @@ Work through these four exercises in order. Each one triggers a different hook (
 
 ## Setup
 
-1. `cd projects/hooks-playground`
+1. `cd sessions/session-2-build/hooks-playground`
 2. Make sure the hook scripts are executable:
    ```
    chmod +x .claude/hooks/*.sh
