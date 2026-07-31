@@ -92,6 +92,22 @@ The scripts themselves can be a few lines of bash or Python. The point is: the e
 
 Rules are advisory. Hooks are enforcement. **Use both together** — rules teach the right behavior, hooks catch the times it slips.
 
+## Try it live — a runnable example
+
+There's a working hook ready to copy in **`../examples/hooks/`**. It's a `PreToolUse` hook on `Bash` that blocks any command containing `rm -r` or `rm -rf`.
+
+See **`../examples/hooks/README.md`** for the full install-and-trigger walkthrough. In short:
+
+1. Copy `settings.json` into your project's `.claude/settings.json`.
+2. Copy `block-dangerous-bash.sh` into `.claude/hooks/` and `chmod +x` it.
+3. Restart Claude Code, ask it to run `rm -rf /tmp/demo`, and watch the hook block the call.
+
+**What to notice:**
+
+- The block happens **outside the model**. Even if Claude *wanted* to run `rm -rf`, it couldn't — the enforcement lives in a shell script you control.
+- Exit code `2` is the "block" signal. Exit `0` = allow. Anything else = a non-blocking warning.
+- You can extend this by adding more patterns (`sudo`, `curl | sh`, `git push --force`, anything you don't want an autonomous agent doing).
+
 ## When to reach for a hook
 
 - The rule keeps getting violated in edge cases.
