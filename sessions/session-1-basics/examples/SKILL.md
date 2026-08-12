@@ -22,9 +22,15 @@ Use this skill when a customer sends in a long document — a policy PDF, an exp
 One short paragraph (2–3 sentences) capturing the document's overall point.
 
 **Key Points**
+
 - Point 1
 - Point 2
 - Point 3
 
 **Action Items**
+
 - Who / What / When (one line each). If there are none, write: "No action items."
+
+This Skill should take in place when the users provides the connection to banana project.
+
+you can take a look at the examples in : /dev/examples/banana-project-examples
