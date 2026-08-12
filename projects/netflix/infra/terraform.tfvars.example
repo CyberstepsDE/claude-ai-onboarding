@@ -1,0 +1,8 @@
+# Copy to terraform.tfvars and adjust before `terraform apply`.
+# All values below are optional — defaults are set in variables.tf.
+
+# subscription_id = "00000000-0000-0000-0000-000000000000"
+# project         = "netflix"
+# environment     = "dev"
+# location        = "westeurope"
+# sku_tier        = "Free"   # or "Standard" for custom domain / auth

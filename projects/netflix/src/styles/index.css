@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+body {
+  background: #141414;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide scrollbars on carousels but keep scrolling */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Fade in for hero backdrop */
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+.fade-in { animation: fadeIn .6s ease-out both; }
+
+/* Card hover pop-out */
+@keyframes popIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to   { transform: scale(1.15); opacity: 1; }
+}
+.pop-in { animation: popIn .18s ease-out forwards; }
