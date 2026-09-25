@@ -1,0 +1,9 @@
+# Copy to terraform.tfvars and fill in. terraform.tfvars is gitignored.
+
+subscription_id = "00000000-0000-0000-0000-000000000000"
+project         = "azure-creator"
+environment     = "dev"
+location        = "westeurope"
+
+# Keep "mock" unless you have granted the app's Managed Identity a write role.
+executor_mode = "mock"
